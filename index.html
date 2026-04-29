@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Song Popularity Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Project homepage">
+        <span class="brand-mark">SP</span>
+        <span>Song Popularity ML</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#overview">Overview</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#models">Models</a>
+        <a href="#results">Results</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#todo">TODO</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Machine Learning / Data Science Final Project</p>
+          <h1>Predicting Spotify Song Popularity From Acoustic Features</h1>
+          <p class="hero-copy">
+            We aim to predict the popularity of a song based on its acoustic features and
+            artist-related information from Spotify song data.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#results">View Result</a>
+            <a class="button secondary" href="#figures">Figure Placeholders</a>
+          </div>
+        </div>
+
+        <aside class="result-panel" aria-label="Homepage model comparison result">
+          <div class="panel-header">
+            <span class="status-dot"></span>
+            <span>Current Performance Ranking</span>
+          </div>
+          <h2>Neural Network leads the comparison</h2>
+          <p>
+            Exact MAE, RMSE, and R² values are not finalized yet. The visual below reflects the
+            current ranking only and is not a metric scale.
+          </p>
+          <div class="rank-chart" data-chart="ranking">
+            <div class="rank-row is-best" style="--bar-size: 100%">
+              <span>Neural Network</span>
+              <div class="bar-track"><div class="bar"></div></div>
+              <strong>Best</strong>
+            </div>
+            <div class="rank-row" style="--bar-size: 78%">
+              <span>Random Forest</span>
+              <div class="bar-track"><div class="bar"></div></div>
+              <strong>TODO</strong>
+            </div>
+            <div class="rank-row" style="--bar-size: 76%">
+              <span>Gradient Boosting</span>
+              <div class="bar-track"><div class="bar"></div></div>
+              <strong>TODO</strong>
+            </div>
+            <div class="rank-row" style="--bar-size: 44%">
+              <span>Linear Regression</span>
+              <div class="bar-track"><div class="bar"></div></div>
+              <strong>Baseline</strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="overview" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Project Overview</p>
+          <h2>What we are building</h2>
+        </div>
+        <div class="two-column">
+          <div>
+            <p>
+              This project develops a predictive model that analyzes a song's acoustic features
+              to estimate its popularity. The final website is structured to support the project
+              report as results, figures, and exact dataset details are finalized.
+            </p>
+          </div>
+          <div class="summary-grid">
+            <div class="summary-item">
+              <span>Prediction target</span>
+              <strong>Song popularity</strong>
+            </div>
+            <div class="summary-item">
+              <span>Split</span>
+              <strong>80/20 train-test</strong>
+            </div>
+            <div class="summary-item">
+              <span>Metrics</span>
+              <strong>MAE, RMSE, R²</strong>
+            </div>
+            <div class="summary-item">
+              <span>Status</span>
+              <strong>Results in progress</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="dataset" class="section tinted">
+        <div class="section-heading">
+          <p class="eyebrow">Dataset</p>
+          <h2>Spotify song-level data</h2>
+        </div>
+        <div class="content-grid">
+          <article class="info-block">
+            <h3>Unit of analysis</h3>
+            <p>Each row represents a song in the Spotify dataset.</p>
+          </article>
+          <article class="info-block">
+            <h3>Label</h3>
+            <p>Song popularity.</p>
+          </article>
+          <article class="info-block">
+            <h3>Features</h3>
+            <p>Acoustic features plus artist-related information.</p>
+          </article>
+          <article class="info-block warning">
+            <h3>Current limitation</h3>
+            <p>Dataset details are not fully finalized yet. TODO: add final CSV summary.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="models" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Models</p>
+          <h2>Modeling approach</h2>
+        </div>
+        <div class="model-list">
+          <article class="model-card">
+            <span>01</span>
+            <h3>Linear Regression</h3>
+            <p>Baseline model for comparison against nonlinear methods.</p>
+          </article>
+          <article class="model-card">
+            <span>02</span>
+            <h3>Gradient Boosting Decision Tree</h3>
+            <p>Tree ensemble designed to capture nonlinear relationships.</p>
+          </article>
+          <article class="model-card">
+            <span>03</span>
+            <h3>Random Forest</h3>
+            <p>Bagged tree ensemble used to improve stability and generalization.</p>
+          </article>
+          <article class="model-card featured">
+            <span>04</span>
+            <h3>Neural Network</h3>
+            <p>Current best-performing model in the project ranking.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="results" class="section dark">
+        <div class="section-heading">
+          <p class="eyebrow">Results</p>
+          <h2>Current model ranking</h2>
+        </div>
+        <div class="results-layout">
+          <div>
+            <p>
+              The current ranking is Neural Network &gt; Random Forest ≈ Gradient Boosting &gt;
+              Linear Regression. Exact values are intentionally marked as TODO until the final
+              experiment table is available.
+            </p>
+            <ul class="metric-list">
+              <li><span>MAE</span><strong>TODO</strong></li>
+              <li><span>RMSE</span><strong>TODO</strong></li>
+              <li><span>R²</span><strong>TODO</strong></li>
+            </ul>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Model performance ranking">
+            <div role="row" class="table-head">
+              <span role="columnheader">Rank</span>
+              <span role="columnheader">Model</span>
+              <span role="columnheader">Metrics</span>
+            </div>
+            <div role="row">
+              <span>1</span>
+              <strong>Neural Network</strong>
+              <span>TODO</span>
+            </div>
+            <div role="row">
+              <span>2</span>
+              <strong>Random Forest</strong>
+              <span>TODO</span>
+            </div>
+            <div role="row">
+              <span>3</span>
+              <strong>Gradient Boosting</strong>
+              <span>TODO</span>
+            </div>
+            <div role="row">
+              <span>4</span>
+              <strong>Linear Regression</strong>
+              <span>TODO</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="figures" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Figures</p>
+          <h2>Placeholder visualizations</h2>
+        </div>
+        <div class="figure-grid">
+          <article class="figure-placeholder">
+            <div class="placeholder-art scatter"></div>
+            <h3>Feature vs Popularity</h3>
+            <p>TODO: add selected feature scatterplots.</p>
+          </article>
+          <article class="figure-placeholder">
+            <div class="placeholder-art heatmap"></div>
+            <h3>Correlation Matrix</h3>
+            <p>TODO: add numerical-variable correlation heatmap.</p>
+          </article>
+          <article class="figure-placeholder">
+            <div class="placeholder-art bars"></div>
+            <h3>Model Comparison</h3>
+            <p>TODO: add finalized metric comparison chart.</p>
+          </article>
+          <article class="figure-placeholder">
+            <div class="placeholder-art diagonal"></div>
+            <h3>Prediction vs Actual</h3>
+            <p>TODO: add predicted vs actual popularity plot.</p>
+          </article>
+          <article class="figure-placeholder">
+            <div class="placeholder-art residual"></div>
+            <h3>Residual Plot</h3>
+            <p>TODO: add residual diagnostics.</p>
+          </article>
+          <article class="figure-placeholder">
+            <div class="placeholder-art importance"></div>
+            <h3>Feature Importance</h3>
+            <p>TODO: add importance ranking and interpretation.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="analysis" class="section tinted">
+        <div class="section-heading">
+          <p class="eyebrow">Insights & Deeper Analysis</p>
+          <h2>What the model suggests so far</h2>
+        </div>
+        <div class="analysis-grid">
+          <article class="info-block">
+            <h3>Main insight</h3>
+            <p>Artist has the strongest impact on popularity.</p>
+          </article>
+          <article class="info-block">
+            <h3>Feature influence</h3>
+            <p>Some acoustic and artist-related features strongly influence model performance.</p>
+          </article>
+          <article class="info-block">
+            <h3>Feature importance</h3>
+            <p>TODO: add feature importance analysis from finalized models.</p>
+          </article>
+          <article class="info-block">
+            <h3>Correlation</h3>
+            <p>TODO: add correlation analysis for numerical variables.</p>
+          </article>
+          <article class="info-block">
+            <h3>Permutation importance</h3>
+            <p>TODO: add permutation feature importance for mixed variable types.</p>
+          </article>
+          <article class="info-block warning">
+            <h3>Limitations</h3>
+            <p>Dataset and results are not fully finalized, and some analysis remains incomplete.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="todo" class="section todo-section">
+        <div class="section-heading">
+          <p class="eyebrow">Next Steps</p>
+          <h2>Project TODO</h2>
+        </div>
+        <ul class="todo-list">
+          <li>Add figures.</li>
+          <li>Add exact metrics.</li>
+          <li>Refine analysis.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Spotify Song Popularity Prediction · Final Project Website</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
