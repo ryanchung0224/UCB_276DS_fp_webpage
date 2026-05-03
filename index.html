@@ -26,10 +26,13 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
         <a href="#overview">Overview</a>
         <a href="#dataset">Dataset</a>
+        <a href="#data-processing">Filtering</a>
         <a href="#models">Models</a>
         <a href="#results">Results</a>
-        <a href="#analysis">Analysis</a>
-        <a href="#todo">TODO</a>
+        <a href="#figures">Importance</a>
+        <a href="#analysis">Insights</a>
+        <a href="#project-summary">Summary</a>
+        <a href="#credits">Credits</a>
       </nav>
     </header>
 
@@ -37,14 +40,14 @@
       <section class="hero">
         <div class="hero-content">
           <p class="eyebrow">Machine Learning / Data Science Final Project</p>
-          <h1>Predicting Spotify Song Popularity From Acoustic Features</h1>
+          <h1>Predicting Spotify Song Popularity From Multiple Features</h1>
           <p class="hero-copy">
             We aim to predict the popularity of a song based on its acoustic features and
             artist-related information from Spotify song data.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#results">View Result</a>
-            <a class="button secondary" href="#figures">Figure Placeholders</a>
+            <a class="button secondary" href="#figures">Feature Importance</a>
           </div>
         </div>
 
@@ -91,9 +94,14 @@
         <div class="two-column">
           <div>
             <p>
-              This project develops a predictive model that analyzes a song's acoustic features
-              to estimate its popularity. The final website is structured to support the project
-              report as results, figures, and exact dataset details are finalized.
+              Our goal is to develop a predictive model that analyzes a song's multiple features
+              to predict its popularity.
+            </p>
+            <p>
+              The current music industry is highly competitive and saturated, with more than
+              100,000 new tracks delivered to streaming services each day. Statistical analysis is
+              essential for artists and stakeholders to quantify a song's potential success before
+              capital is deployed.
             </p>
           </div>
           <div class="summary-grid">
@@ -124,20 +132,90 @@
         </div>
         <div class="content-grid">
           <article class="info-block">
-            <h3>Unit of analysis</h3>
-            <p>Each row represents a song in the Spotify dataset.</p>
+            <h3>Basic Info</h3>
+            <p><strong>track_id:</strong> Unique track ID.</p>
+            <p><strong>track_name, artists, album_name:</strong> Song details.</p>
+            <p><strong>track_genre:</strong> Music genre.</p>
           </article>
           <article class="info-block">
-            <h3>Label</h3>
-            <p>Song popularity.</p>
+            <h3>Audio Features</h3>
+            <p><strong>danceability:</strong> Suitability for dancing.</p>
+            <p><strong>energy:</strong> Intensity, from fast and loud to calm.</p>
+            <p><strong>valence:</strong> Mood, from happy to sad.</p>
+            <p><strong>speechiness:</strong> Spoken words presence.</p>
+            <p><strong>instrumentalness:</strong> Likelihood of no vocals.</p>
+            <p><strong>acousticness:</strong> Likelihood of acoustic sound.</p>
+            <p><strong>liveness:</strong> Likelihood of live performance.</p>
+            <p>Most audio feature values are measured on a 0-1 scale.</p>
           </article>
           <article class="info-block">
-            <h3>Features</h3>
-            <p>Acoustic features plus artist-related information.</p>
+            <h3>Popularity & Length</h3>
+            <p><strong>popularity:</strong> Score from 0-100 based on plays and recency.</p>
+            <p><strong>duration_ms:</strong> Track length in milliseconds.</p>
           </article>
-          <article class="info-block warning">
-            <h3>Current limitation</h3>
-            <p>Dataset details are not fully finalized yet. TODO: add final CSV summary.</p>
+          <article class="info-block">
+            <h3>Content</h3>
+            <p><strong>explicit:</strong> Whether the track contains explicit lyrics, recorded as true or false.</p>
+          </article>
+          <article class="info-block">
+            <h3>Musical Properties</h3>
+            <p><strong>key:</strong> Pitch class from 0-11, with -1 for unknown.</p>
+            <p><strong>mode:</strong> Major is 1 and minor is 0.</p>
+            <p><strong>tempo:</strong> Speed of the track in BPM.</p>
+            <p><strong>loudness:</strong> Overall volume in dB.</p>
+            <p><strong>time_signature:</strong> Beats per measure, from 3-7.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="data-processing" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Filtering</p>
+          <h2>Data Processing</h2>
+        </div>
+        <div class="content-grid">
+          <article class="info-block">
+            <h3>Baseline Finding</h3>
+            <p>
+              The artist popularity mean baseline showed that artist-level popularity is an
+              important signal for prediction.
+            </p>
+          </article>
+          <article class="info-block">
+            <h3>Low Popularity Filter</h3>
+            <p>
+              Songs with popularity below 10 had large prediction errors, so we removed those
+              low-popularity records.
+            </p>
+          </article>
+          <article class="info-block">
+            <h3>Artist Sample Filter</h3>
+            <p>
+              To make artist averages more reliable, we removed artists with 10 or fewer songs
+              from the dataset.
+            </p>
+          </article>
+        </div>
+        <div class="dataset-variant-intro">
+          <h3>Dataset Variants</h3>
+          <p>
+            Since artist name and track genre are important for popularity prediction, we created
+            three dataset versions to compare how different feature groups affect model
+            performance. Track genre will be discussed in more detail in a later section.
+          </p>
+        </div>
+        <div class="dataset-variants">
+          <article class="variant-card">
+            <span>1</span>
+            <strong>Numerical Features</strong>
+          </article>
+          <article class="variant-card">
+            <span>2</span>
+            <strong>Numerical Features + Track Genre</strong>
+          </article>
+          <article class="variant-card">
+            <span>3</span>
+            <strong>Numerical Features + Track Genre + Artist</strong>
           </article>
         </div>
       </section>
@@ -149,24 +227,42 @@
         </div>
         <div class="model-list">
           <article class="model-card">
+            <span>00</span>
+            <h3>Baseline Models</h3>
+            <p>
+              We use two baseline models: one predicts popularity using the average popularity of
+              all songs, and the other predicts popularity using each artist's average song
+              popularity.
+            </p>
+          </article>
+          <article class="model-card">
             <span>01</span>
             <h3>Linear Regression</h3>
-            <p>Baseline model for comparison against nonlinear methods.</p>
+            <p>Linear model used to estimate popularity from the numerical features.</p>
           </article>
           <article class="model-card">
             <span>02</span>
             <h3>Gradient Boosting Decision Tree</h3>
-            <p>Tree ensemble designed to capture nonlinear relationships.</p>
+            <p>
+              Sequential tree ensemble that adds new regression trees to correct the errors left
+              by earlier trees.
+            </p>
           </article>
           <article class="model-card">
             <span>03</span>
             <h3>Random Forest</h3>
-            <p>Bagged tree ensemble used to improve stability and generalization.</p>
+            <p>
+              Ensemble of decision tree regressors trained on different data samples, with their
+              predictions averaged to improve stability.
+            </p>
           </article>
           <article class="model-card featured">
             <span>04</span>
             <h3>Neural Network</h3>
-            <p>Current best-performing model in the project ranking.</p>
+            <p>
+              Layer-based model that learns nonlinear patterns across the input features through
+              connected dense layers.
+            </p>
           </article>
         </div>
       </section>
@@ -174,133 +270,319 @@
       <section id="results" class="section dark">
         <div class="section-heading">
           <p class="eyebrow">Results</p>
-          <h2>Current model ranking</h2>
+          <h2>Performance across dataset versions</h2>
         </div>
-        <div class="results-layout">
-          <div>
-            <p>
-              The current ranking is Neural Network &gt; Random Forest ≈ Gradient Boosting &gt;
-              Linear Regression. Exact values are intentionally marked as TODO until the final
-              experiment table is available.
-            </p>
-            <ul class="metric-list">
-              <li><span>MAE</span><strong>TODO</strong></li>
-              <li><span>RMSE</span><strong>TODO</strong></li>
-              <li><span>R²</span><strong>TODO</strong></li>
-            </ul>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Model performance ranking">
-            <div role="row" class="table-head">
-              <span role="columnheader">Rank</span>
-              <span role="columnheader">Model</span>
-              <span role="columnheader">Metrics</span>
+        <p class="results-intro">
+          We evaluate four models on three dataset versions. Each result card will contain its own
+          prediction figure and the three performance metrics: MAE, RMSE, and R².
+        </p>
+        <div class="result-matrix">
+          <section class="result-dataset" aria-labelledby="results-dataset-1">
+            <div class="dataset-row-heading">
+              <span>Dataset 1</span>
+              <h3 id="results-dataset-1">Numerical Features</h3>
             </div>
-            <div role="row">
-              <span>1</span>
-              <strong>Neural Network</strong>
-              <span>TODO</span>
+            <div class="result-card-grid">
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Linear Regression</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Gradient Boosting</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Random Forest</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Neural Network</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
             </div>
-            <div role="row">
-              <span>2</span>
-              <strong>Random Forest</strong>
-              <span>TODO</span>
+          </section>
+
+          <section class="result-dataset" aria-labelledby="results-dataset-2">
+            <div class="dataset-row-heading">
+              <span>Dataset 2</span>
+              <h3 id="results-dataset-2">Numerical Features + Track Genre</h3>
             </div>
-            <div role="row">
-              <span>3</span>
-              <strong>Gradient Boosting</strong>
-              <span>TODO</span>
+            <div class="result-card-grid">
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Linear Regression</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Gradient Boosting</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Random Forest</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Neural Network</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
             </div>
-            <div role="row">
-              <span>4</span>
-              <strong>Linear Regression</strong>
-              <span>TODO</span>
+          </section>
+
+          <section class="result-dataset" aria-labelledby="results-dataset-3">
+            <div class="dataset-row-heading">
+              <span>Dataset 3</span>
+              <h3 id="results-dataset-3">Numerical Features + Track Genre + Artist</h3>
             </div>
-          </div>
+            <div class="result-card-grid">
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Linear Regression</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Gradient Boosting</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Random Forest</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot"></div>
+                <h4>Neural Network</h4>
+                <ul>
+                  <li><span>MAE</span><strong>TODO</strong></li>
+                  <li><span>RMSE</span><strong>TODO</strong></li>
+                  <li><span>R²</span><strong>TODO</strong></li>
+                </ul>
+              </article>
+            </div>
+          </section>
         </div>
       </section>
 
       <section id="figures" class="section">
         <div class="section-heading">
-          <p class="eyebrow">Figures</p>
-          <h2>Placeholder visualizations</h2>
+          <p class="eyebrow">Feature Importance</p>
+          <h2>Permutation Feature Importance</h2>
         </div>
-        <div class="figure-grid">
-          <article class="figure-placeholder">
-            <div class="placeholder-art scatter"></div>
-            <h3>Feature vs Popularity</h3>
-            <p>TODO: add selected feature scatterplots.</p>
-          </article>
-          <article class="figure-placeholder">
-            <div class="placeholder-art heatmap"></div>
-            <h3>Correlation Matrix</h3>
-            <p>TODO: add numerical-variable correlation heatmap.</p>
-          </article>
-          <article class="figure-placeholder">
+        <p class="figure-intro">
+          We use permutation feature importance with the Gradient Boosting model to compare all
+          features together, including both numerical and categorical features. The result shows
+          that the artist who made the song is the most important factor for popularity, followed
+          by track genre. Other features have much smaller effects on song popularity.
+        </p>
+        <div class="figure-grid importance-grid">
+          <article class="figure-placeholder importance-chart">
             <div class="placeholder-art bars"></div>
-            <h3>Model Comparison</h3>
-            <p>TODO: add finalized metric comparison chart.</p>
-          </article>
-          <article class="figure-placeholder">
-            <div class="placeholder-art diagonal"></div>
-            <h3>Prediction vs Actual</h3>
-            <p>TODO: add predicted vs actual popularity plot.</p>
-          </article>
-          <article class="figure-placeholder">
-            <div class="placeholder-art residual"></div>
-            <h3>Residual Plot</h3>
-            <p>TODO: add residual diagnostics.</p>
-          </article>
-          <article class="figure-placeholder">
-            <div class="placeholder-art importance"></div>
-            <h3>Feature Importance</h3>
-            <p>TODO: add importance ranking and interpretation.</p>
+            <h3>Permutation Feature Importance Bar Chart</h3>
+            <p>TODO: add the finalized bar chart comparing all feature importance scores.</p>
           </article>
         </div>
       </section>
 
       <section id="analysis" class="section tinted">
         <div class="section-heading">
-          <p class="eyebrow">Insights & Deeper Analysis</p>
+          <p class="eyebrow">Interpretation & Insight</p>
           <h2>What the model suggests so far</h2>
         </div>
         <div class="analysis-grid">
           <article class="info-block">
-            <h3>Main insight</h3>
-            <p>Artist has the strongest impact on popularity.</p>
+            <h3>Artist Effect</h3>
+            <p>
+              Artist is the strongest signal in our model. This suggests that popularity is shaped
+              heavily by existing audience size, recognition, playlist exposure, and fan loyalty.
+            </p>
           </article>
           <article class="info-block">
-            <h3>Feature influence</h3>
-            <p>Some acoustic and artist-related features strongly influence model performance.</p>
+            <h3>Genre Context</h3>
+            <p>
+              Track genre is the next most important feature. Genre captures market context:
+              different listener groups, playlist categories, and demand patterns can lead to
+              different popularity levels.
+            </p>
           </article>
           <article class="info-block">
-            <h3>Feature importance</h3>
-            <p>TODO: add feature importance analysis from finalized models.</p>
+            <h3>Limited Audio Signal</h3>
+            <p>
+              Most other features have very small importance. Audio properties like tempo, key,
+              valence, or danceability may describe how a song sounds, but they do not strongly
+              explain popularity by themselves.
+            </p>
           </article>
           <article class="info-block">
-            <h3>Correlation</h3>
-            <p>TODO: add correlation analysis for numerical variables.</p>
+            <h3>Interpretation</h3>
+            <p>
+              The result implies that Spotify popularity is less about one universal musical
+              formula and more about cultural position: who released the song and which genre
+              ecosystem it belongs to.
+            </p>
           </article>
           <article class="info-block">
-            <h3>Permutation importance</h3>
-            <p>TODO: add permutation feature importance for mixed variable types.</p>
+            <h3>Practical Insight</h3>
+            <p>
+              For artists and stakeholders, improving popularity prediction requires features that
+              represent audience reach and market placement, not only acoustic measurements.
+            </p>
           </article>
-          <article class="info-block warning">
-            <h3>Limitations</h3>
-            <p>Dataset and results are not fully finalized, and some analysis remains incomplete.</p>
+          <article class="info-block">
+            <h3>Model Takeaway</h3>
+            <p>
+              The model is learning that popularity behaves like a social and platform-driven
+              outcome. Musical attributes matter, but their effect is much smaller than artist and
+              genre identity.
+            </p>
           </article>
         </div>
       </section>
 
-      <section id="todo" class="section todo-section">
+      <section id="project-summary" class="section">
         <div class="section-heading">
-          <p class="eyebrow">Next Steps</p>
-          <h2>Project TODO</h2>
+          <p class="eyebrow">Summary</p>
+          <h2>Project Summary</h2>
         </div>
-        <ul class="todo-list">
-          <li>Add figures.</li>
-          <li>Add exact metrics.</li>
-          <li>Refine analysis.</li>
-        </ul>
+        <div class="project-summary-panel">
+          <p>
+            This project began with a simple question: can Spotify song popularity be predicted
+            from the information available about a track? Our results suggest that the answer is
+            yes, but not mainly for the reason people might expect. Popularity is not explained
+            strongly by isolated acoustic qualities such as tempo, key, valence, or danceability.
+            Instead, the model points to a broader music-market reality: songs become popular
+            inside social, cultural, and platform ecosystems.
+          </p>
+          <p>
+            By filtering unreliable low-popularity records, comparing three dataset versions, and
+            evaluating multiple model families, we found that adding categorical context changes
+            the problem substantially. Artist identity carries the strongest signal, track genre
+            adds meaningful context, and the remaining numerical features contribute far less.
+            The gap between artist and genre is also meaningful: many artists consistently operate
+            within the same genre, so the artist variable can absorb part of the genre signal along
+            with fan base, promotion history, and name recognition. In other words, Spotify
+            popularity is not only a property of the song's sound; it is also a reflection of who
+            released it, which audience it reaches, and where it sits in the streaming landscape.
+          </p>
+          <div class="summary-takeaways">
+            <article>
+              <span>01</span>
+              <strong>Popularity is contextual</strong>
+              <p>Artist and genre explain more than most standalone audio descriptors.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <strong>Feature design matters</strong>
+              <p>Moving beyond numerical features gives the model more realistic market signals.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <strong>Strategy depends on career stage</strong>
+              <p>
+                New artists cannot rely on name recognition yet, so genre positioning and early
+                exposure become the signals they can actively build.
+              </p>
+            </article>
+            <article>
+              <span>04</span>
+              <strong>Platform recommendation matters</strong>
+              <p>
+                From Spotify's perspective, artist and genre can help group similar listening
+                patterns, making them useful signals when recommending related songs.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="credits" class="section credits-section">
+        <div class="section-heading">
+          <p class="eyebrow">Credits</p>
+          <h2>Project Team</h2>
+        </div>
+        <div class="credits-grid">
+          <article>
+            <h3>Team Members</h3>
+            <div class="credit-tags">
+              <span>Chen-Yen Wu</span>
+              <span>Yu-Wei Chang</span>
+              <span>Michell Zhang Beiglari</span>
+              <span>Evan Grealish</span>
+              <span>Ryan Chung</span>
+            </div>
+          </article>
+          <article>
+            <h3>Instructor</h3>
+            <div class="credit-tags">
+              <span>Roberto Horowitz</span>
+            </div>
+          </article>
+          <article>
+            <h3>GSIs</h3>
+            <div class="credit-tags">
+              <span>Hyunin Lee</span>
+              <span>Orlando Muñoz</span>
+              <span>Joohwan Seo</span>
+            </div>
+          </article>
+          <article>
+            <h3>Readers</h3>
+            <div class="credit-tags">
+              <span>Alli Wang</span>
+              <span>Hyunjun Kim</span>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
 

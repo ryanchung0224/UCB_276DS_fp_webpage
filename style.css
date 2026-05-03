@@ -71,14 +71,17 @@ a {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px 14px;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.84rem;
   font-weight: 600;
 }
 
 .site-nav a {
   padding: 8px 0;
+  white-space: nowrap;
 }
 
 .site-nav a:hover,
@@ -345,6 +348,77 @@ h3 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+#dataset .content-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+#dataset .info-block {
+  padding: 18px;
+}
+
+#dataset .info-block h3 {
+  margin-bottom: 12px;
+}
+
+#dataset .info-block p {
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+  line-height: 1.42;
+}
+
+#dataset .info-block p:last-child {
+  margin-bottom: 0;
+}
+
+.dataset-variant-intro {
+  max-width: 100%;
+  margin-top: 34px;
+}
+
+.dataset-variant-intro h3 {
+  margin-bottom: 8px;
+}
+
+.dataset-variant-intro p {
+  color: var(--muted);
+}
+
+.dataset-variants {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.variant-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 96px;
+  padding: 20px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.variant-card span {
+  display: grid;
+  flex: 0 0 42px;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: #fff;
+  background: var(--teal);
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.variant-card strong {
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
 .analysis-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -361,7 +435,7 @@ h3 {
 }
 
 .model-list {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .model-card span {
@@ -400,6 +474,130 @@ h3 {
   display: block;
 }
 
+.results-intro {
+  max-width: 980px;
+  margin-bottom: 30px;
+}
+
+.result-matrix {
+  display: grid;
+  gap: 28px;
+}
+
+.result-dataset {
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+}
+
+.dataset-row-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.dataset-row-heading span {
+  color: #8fd6cb;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dataset-row-heading h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.15rem;
+  text-align: right;
+}
+
+.result-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.result-card {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+}
+
+.result-card h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 0.98rem;
+}
+
+.result-plot {
+  position: relative;
+  min-height: 132px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    rgba(12, 22, 36, 0.65);
+  background-size: 28px 28px;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+}
+
+.result-plot::before {
+  position: absolute;
+  inset: 22px 18px 24px;
+  border-bottom: 2px solid rgba(143, 214, 203, 0.85);
+  border-left: 2px solid rgba(143, 214, 203, 0.85);
+  content: "";
+}
+
+.result-plot::after {
+  position: absolute;
+  right: 18px;
+  bottom: 25px;
+  left: 24px;
+  height: 62px;
+  background: linear-gradient(135deg, transparent 0 45%, var(--coral) 46% 49%, transparent 50%);
+  content: "";
+}
+
+.result-card ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.result-card li {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.result-card li span,
+.result-card li strong {
+  display: block;
+}
+
+.result-card li span {
+  color: #c8d3df;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.result-card li strong {
+  margin-top: 2px;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
 .comparison-table {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -428,6 +626,24 @@ h3 {
 
 .figure-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.figure-intro {
+  max-width: 1080px;
+  margin-bottom: 24px;
+  color: var(--muted);
+}
+
+.importance-grid {
+  grid-template-columns: 1fr;
+}
+
+.importance-chart {
+  max-width: 1080px;
+}
+
+.importance-chart .placeholder-art {
+  height: 280px;
 }
 
 .placeholder-art {
@@ -503,6 +719,50 @@ h3 {
     radial-gradient(circle at 70% 54%, var(--teal-dark) 0 4px, transparent 5px);
 }
 
+.project-summary-panel {
+  padding: 30px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.project-summary-panel > p {
+  max-width: 1080px;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.summary-takeaways {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.summary-takeaways article {
+  padding: 20px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.summary-takeaways span {
+  color: var(--coral);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.summary-takeaways strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.02rem;
+}
+
+.summary-takeaways p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
 .todo-section {
   background: #fff;
 }
@@ -522,6 +782,78 @@ h3 {
   border-left: 4px solid var(--coral);
   border-radius: 8px;
   font-weight: 700;
+}
+
+.credits-section {
+  background: var(--soft);
+}
+
+.credits-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.credits-grid article {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.credits-grid article::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), var(--gold), var(--coral));
+  content: "";
+}
+
+.credits-grid p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.credit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.credit-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 11px;
+  color: var(--teal-dark);
+  background: #e8f5f2;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.credits-grid article:nth-child(2) .credit-tags span {
+  color: #8a3d27;
+  background: #fff0e9;
+  border-color: rgba(225, 95, 65, 0.22);
+}
+
+.credits-grid article:nth-child(3) .credit-tags span {
+  color: #72510c;
+  background: #fff8df;
+  border-color: rgba(216, 163, 26, 0.25);
+}
+
+.credits-grid article:nth-child(4) .credit-tags span {
+  color: var(--navy);
+  background: var(--soft-blue);
+  border-color: rgba(19, 34, 56, 0.14);
 }
 
 .site-footer {
@@ -553,6 +885,26 @@ h3 {
   .model-list,
   .figure-grid,
   .analysis-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #dataset .content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dataset-variants {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-takeaways {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .result-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .credits-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -615,8 +967,20 @@ h3 {
   .model-list,
   .figure-grid,
   .analysis-grid,
-  .metric-list {
+  .metric-list,
+  .result-card-grid,
+  .summary-takeaways,
+  .credits-grid {
     grid-template-columns: 1fr;
+  }
+
+  .dataset-row-heading {
+    display: block;
+  }
+
+  .dataset-row-heading h3 {
+    margin-top: 6px;
+    text-align: left;
   }
 
   .comparison-table > div {
