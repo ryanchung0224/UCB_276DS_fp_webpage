@@ -226,7 +226,7 @@ h3 {
 
 .rank-row {
   display: grid;
-  grid-template-columns: minmax(110px, 145px) 1fr minmax(62px, auto);
+  grid-template-columns: minmax(110px, 145px) 1fr minmax(68px, auto);
   gap: 12px;
   align-items: center;
   font-size: 0.9rem;
@@ -242,6 +242,7 @@ h3 {
   font-size: 0.78rem;
   text-align: right;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .bar-track {
@@ -537,33 +538,21 @@ h3 {
 
 .result-plot {
   position: relative;
-  min-height: 132px;
+  aspect-ratio: 1 / 1;
+  min-height: 160px;
   overflow: hidden;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    rgba(12, 22, 36, 0.65);
-  background-size: 28px 28px;
-  border: 1px dashed rgba(255, 255, 255, 0.25);
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
 }
 
-.result-plot::before {
-  position: absolute;
-  inset: 22px 18px 24px;
-  border-bottom: 2px solid rgba(143, 214, 203, 0.85);
-  border-left: 2px solid rgba(143, 214, 203, 0.85);
-  content: "";
-}
-
-.result-plot::after {
-  position: absolute;
-  right: 18px;
-  bottom: 25px;
-  left: 24px;
-  height: 62px;
-  background: linear-gradient(135deg, transparent 0 45%, var(--coral) 46% 49%, transparent 50%);
-  content: "";
+.result-plot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .result-card ul {
@@ -635,15 +624,55 @@ h3 {
 }
 
 .importance-grid {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.importance-chart {
-  max-width: 1080px;
+.importance-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 40px rgba(24, 39, 55, 0.08);
 }
 
-.importance-chart .placeholder-art {
-  height: 280px;
+.importance-card h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.importance-card p {
+  min-height: 2.6em;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.importance-image {
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.importance-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.importance-note {
+  max-width: 920px;
+  margin: 24px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  border-left: 4px solid var(--teal);
 }
 
 .placeholder-art {

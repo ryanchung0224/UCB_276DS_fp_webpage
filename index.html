@@ -16,7 +16,7 @@
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Project homepage">
         <span class="brand-mark">SP</span>
-        <span>Song Popularity ML</span>
+        <span>Spotify Song Popularity Prediction</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span></span>
@@ -56,29 +56,33 @@
             <span class="status-dot"></span>
             <span>Current Performance Ranking</span>
           </div>
-          <h2>Neural Network leads the comparison</h2>
+          <h2>Random Forest leads the comparison</h2>
           <p>
-            Exact MAE, RMSE, and R² values are not finalized yet. The visual below reflects the
-            current ranking only and is not a metric scale.
+            Bars compare the R² results on a focused scale so the performance gaps are visible.
           </p>
           <div class="rank-chart" data-chart="ranking">
-            <div class="rank-row is-best" style="--bar-size: 100%">
-              <span>Neural Network</span>
+            <div class="rank-row is-best" style="--bar-size: 100%" aria-label="Random Forest R squared 0.8177">
+              <span>Random Forest</span>
               <div class="bar-track"><div class="bar"></div></div>
               <strong>Best</strong>
             </div>
-            <div class="rank-row" style="--bar-size: 78%">
-              <span>Random Forest</span>
+            <div class="rank-row" style="--bar-size: 86%" aria-label="Neural Network R squared 0.8108">
+              <span>Neural Network</span>
               <div class="bar-track"><div class="bar"></div></div>
-              <strong>TODO</strong>
+              <strong>Strong</strong>
             </div>
-            <div class="rank-row" style="--bar-size: 76%">
+            <div class="rank-row" style="--bar-size: 68%" aria-label="Gradient Boosting R squared 0.8023">
               <span>Gradient Boosting</span>
               <div class="bar-track"><div class="bar"></div></div>
-              <strong>TODO</strong>
+              <strong>Solid</strong>
             </div>
-            <div class="rank-row" style="--bar-size: 44%">
+            <div class="rank-row" style="--bar-size: 45%" aria-label="Linear Regression R squared 0.7915">
               <span>Linear Regression</span>
+              <div class="bar-track"><div class="bar"></div></div>
+              <strong>Fair</strong>
+            </div>
+            <div class="rank-row" style="--bar-size: 28%" aria-label="Artist Mean baseline model">
+              <span>Artist Mean</span>
               <div class="bar-track"><div class="bar"></div></div>
               <strong>Baseline</strong>
             </div>
@@ -128,7 +132,7 @@
       <section id="dataset" class="section tinted">
         <div class="section-heading">
           <p class="eyebrow">Dataset</p>
-          <h2>Spotify song-level data</h2>
+          <h2>Features</h2>
         </div>
         <div class="content-grid">
           <article class="info-block">
@@ -284,39 +288,47 @@
             </div>
             <div class="result-card-grid">
               <article class="result-card">
-                <div class="result-plot"></div>
+                <div class="result-plot">
+                  <img src="images/1.png" alt="Linear Regression result for Dataset 1" />
+                </div>
                 <h4>Linear Regression</h4>
                 <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
+                  <li><span>MAE</span><strong>12.00</strong></li>
+                  <li><span>RMSE</span><strong>16.84</strong></li>
+                  <li><span>R²</span><strong>0.3200</strong></li>
                 </ul>
               </article>
               <article class="result-card">
-                <div class="result-plot"></div>
-                <h4>Gradient Boosting</h4>
-                <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
-                </ul>
-              </article>
-              <article class="result-card">
-                <div class="result-plot"></div>
+                <div class="result-plot">
+                  <img src="images/4.png" alt="Random Forest result for Dataset 1" />
+                </div>
                 <h4>Random Forest</h4>
                 <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
+                  <li><span>MAE</span><strong>10.00</strong></li>
+                  <li><span>RMSE</span><strong>14.85</strong></li>
+                  <li><span>R²</span><strong>0.4722</strong></li>
                 </ul>
               </article>
               <article class="result-card">
-                <div class="result-plot"></div>
+                <div class="result-plot">
+                  <img src="images/7.png" alt="Gradient Boosting result for Dataset 1" />
+                </div>
+                <h4>Gradient Boosting</h4>
+                <ul>
+                  <li><span>MAE</span><strong>12.51</strong></li>
+                  <li><span>RMSE</span><strong>15.30</strong></li>
+                  <li><span>R²</span><strong>0.2222</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot">
+                  <img src="images/10.png" alt="Neural Network result for Dataset 1" />
+                </div>
                 <h4>Neural Network</h4>
                 <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
+                  <li><span>MAE</span><strong>12.00</strong></li>
+                  <li><span>RMSE</span><strong>15.47</strong></li>
+                  <li><span>R²</span><strong>0.2099</strong></li>
                 </ul>
               </article>
             </div>
@@ -329,39 +341,47 @@
             </div>
             <div class="result-card-grid">
               <article class="result-card">
-                <div class="result-plot"></div>
+                <div class="result-plot">
+                  <img src="images/2.png" alt="Linear Regression result for Dataset 2" />
+                </div>
                 <h4>Linear Regression</h4>
                 <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
+                  <li><span>MAE</span><strong>5.33</strong></li>
+                  <li><span>RMSE</span><strong>7.95</strong></li>
+                  <li><span>R²</span><strong>0.7914</strong></li>
                 </ul>
               </article>
               <article class="result-card">
-                <div class="result-plot"></div>
-                <h4>Gradient Boosting</h4>
-                <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
-                </ul>
-              </article>
-              <article class="result-card">
-                <div class="result-plot"></div>
+                <div class="result-plot">
+                  <img src="images/5.png" alt="Random Forest result for Dataset 2" />
+                </div>
                 <h4>Random Forest</h4>
                 <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
+                  <li><span>MAE</span><strong>6.74</strong></li>
+                  <li><span>RMSE</span><strong>9.38</strong></li>
+                  <li><span>R²</span><strong>0.7098</strong></li>
                 </ul>
               </article>
               <article class="result-card">
-                <div class="result-plot"></div>
+                <div class="result-plot">
+                  <img src="images/8.png" alt="Gradient Boosting result for Dataset 2" />
+                </div>
+                <h4>Gradient Boosting</h4>
+                <ul>
+                  <li><span>MAE</span><strong>8.56</strong></li>
+                  <li><span>RMSE</span><strong>11.15</strong></li>
+                  <li><span>R²</span><strong>0.5867</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot">
+                  <img src="images/11.png" alt="Neural Network result for Dataset 2" />
+                </div>
                 <h4>Neural Network</h4>
                 <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
+                  <li><span>MAE</span><strong>7.54</strong></li>
+                  <li><span>RMSE</span><strong>11.18</strong></li>
+                  <li><span>R²</span><strong>0.5875</strong></li>
                 </ul>
               </article>
             </div>
@@ -374,39 +394,47 @@
             </div>
             <div class="result-card-grid">
               <article class="result-card">
-                <div class="result-plot"></div>
+                <div class="result-plot">
+                  <img src="images/3.png" alt="Linear Regression result for Dataset 3" />
+                </div>
                 <h4>Linear Regression</h4>
                 <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
+                  <li><span>MAE</span><strong>5.33</strong></li>
+                  <li><span>RMSE</span><strong>7.95</strong></li>
+                  <li><span>R²</span><strong>0.7915</strong></li>
                 </ul>
               </article>
               <article class="result-card">
-                <div class="result-plot"></div>
-                <h4>Gradient Boosting</h4>
-                <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
-                </ul>
-              </article>
-              <article class="result-card">
-                <div class="result-plot"></div>
+                <div class="result-plot">
+                  <img src="images/6.png" alt="Random Forest result for Dataset 3" />
+                </div>
                 <h4>Random Forest</h4>
                 <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
+                  <li><span>MAE</span><strong>4.72</strong></li>
+                  <li><span>RMSE</span><strong>7.43</strong></li>
+                  <li><span>R²</span><strong>0.8177</strong></li>
                 </ul>
               </article>
               <article class="result-card">
-                <div class="result-plot"></div>
+                <div class="result-plot">
+                  <img src="images/9.png" alt="Gradient Boosting result for Dataset 3" />
+                </div>
+                <h4>Gradient Boosting</h4>
+                <ul>
+                  <li><span>MAE</span><strong>5.42</strong></li>
+                  <li><span>RMSE</span><strong>7.90</strong></li>
+                  <li><span>R²</span><strong>0.8023</strong></li>
+                </ul>
+              </article>
+              <article class="result-card">
+                <div class="result-plot">
+                  <img src="images/12.png" alt="Neural Network result for Dataset 3" />
+                </div>
                 <h4>Neural Network</h4>
                 <ul>
-                  <li><span>MAE</span><strong>TODO</strong></li>
-                  <li><span>RMSE</span><strong>TODO</strong></li>
-                  <li><span>R²</span><strong>TODO</strong></li>
+                  <li><span>MAE</span><strong>5.15</strong></li>
+                  <li><span>RMSE</span><strong>11.18</strong></li>
+                  <li><span>R²</span><strong>0.8108</strong></li>
                 </ul>
               </article>
             </div>
@@ -420,18 +448,41 @@
           <h2>Permutation Feature Importance</h2>
         </div>
         <p class="figure-intro">
-          We use permutation feature importance with the Gradient Boosting model to compare all
-          features together, including both numerical and categorical features. The result shows
-          that the artist who made the song is the most important factor for popularity, followed
-          by track genre. Other features have much smaller effects on song popularity.
+          Permutation feature importance measures how much a model relies on each feature by
+          randomly shuffling one feature at a time and observing how much model performance drops.
+          A larger drop means the feature carries more useful predictive information. We apply this
+          method across the three dataset versions to compare how numerical audio features, track
+          genre, and artist information contribute to Spotify popularity prediction.
         </p>
         <div class="figure-grid importance-grid">
-          <article class="figure-placeholder importance-chart">
-            <div class="placeholder-art bars"></div>
-            <h3>Permutation Feature Importance Bar Chart</h3>
-            <p>TODO: add the finalized bar chart comparing all feature importance scores.</p>
+          <article class="importance-card">
+            <h3>Dataset 1</h3>
+            <p>Numerical Features</p>
+            <div class="importance-image">
+              <img src="images/c.png" alt="Permutation feature importance chart for Dataset 1" />
+            </div>
+          </article>
+          <article class="importance-card">
+            <h3>Dataset 2</h3>
+            <p>Numerical Features + Track Genre</p>
+            <div class="importance-image">
+              <img src="images/b.png" alt="Permutation feature importance chart for Dataset 2" />
+            </div>
+          </article>
+          <article class="importance-card">
+            <h3>Dataset 3</h3>
+            <p>Numerical Features + Track Genre + Artist</p>
+            <div class="importance-image">
+              <img src="images/a.png" alt="Permutation feature importance chart for Dataset 3" />
+            </div>
           </article>
         </div>
+        <p class="importance-note">
+          Overall, artist information is the most important predictor of Spotify popularity, with
+          track genre as the second strongest signal. The remaining audio and numerical features
+          still contribute to the model, but their influence is secondary compared with artist and
+          genre effects.
+        </p>
       </section>
 
       <section id="analysis" class="section tinted">
@@ -443,16 +494,17 @@
           <article class="info-block">
             <h3>Artist Effect</h3>
             <p>
-              Artist is the strongest signal in our model. This suggests that popularity is shaped
-              heavily by existing audience size, recognition, playlist exposure, and fan loyalty.
+              Artist is the strongest signal in our model. One possible explanation is that the
+              artist variable may indirectly capture factors not included in our dataset, such as
+              existing audience size, public recognition, playlist exposure, or fan loyalty.
             </p>
           </article>
           <article class="info-block">
             <h3>Genre Context</h3>
             <p>
-              Track genre is the next most important feature. Genre captures market context:
-              different listener groups, playlist categories, and demand patterns can lead to
-              different popularity levels.
+              Track genre is the next most important feature. This may be because genre acts as a
+              proxy for broader listening contexts, such as audience segments, playlist categories,
+              or demand patterns that are not directly measured in our dataset.
             </p>
           </article>
           <article class="info-block">
