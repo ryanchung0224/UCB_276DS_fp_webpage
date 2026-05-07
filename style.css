@@ -300,8 +300,7 @@ h3 {
   color: #c8d3df;
 }
 
-.two-column,
-.results-layout {
+.two-column {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1fr);
   gap: 42px;
@@ -430,10 +429,6 @@ h3 {
   color: var(--muted);
 }
 
-.warning {
-  border-color: rgba(216, 163, 26, 0.5);
-  background: #fff9e9;
-}
 
 .model-list {
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -455,25 +450,6 @@ h3 {
   color: #d7f5ef;
 }
 
-.metric-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  padding: 0;
-  margin: 28px 0 0;
-  list-style: none;
-}
-
-.metric-list li {
-  padding: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 8px;
-}
-
-.metric-list span,
-.metric-list strong {
-  display: block;
-}
 
 .results-intro {
   max-width: 980px;
@@ -587,31 +563,6 @@ h3 {
   font-size: 0.8rem;
 }
 
-.comparison-table {
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
-}
-
-.comparison-table > div {
-  display: grid;
-  grid-template-columns: 70px 1fr 90px;
-  gap: 16px;
-  padding: 16px 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.comparison-table > div:first-child {
-  border-top: 0;
-}
-
-.table-head {
-  color: #c8d3df;
-  background: rgba(255, 255, 255, 0.08);
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
 
 .figure-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -675,78 +626,6 @@ h3 {
   border-left: 4px solid var(--teal);
 }
 
-.placeholder-art {
-  position: relative;
-  height: 160px;
-  margin-bottom: 18px;
-  overflow: hidden;
-  background: var(--soft-blue);
-  border: 1px dashed #a9bac8;
-  border-radius: 8px;
-}
-
-.placeholder-art::before,
-.placeholder-art::after {
-  content: "";
-  position: absolute;
-}
-
-.scatter::before {
-  inset: 24px;
-  background:
-    radial-gradient(circle at 20% 70%, var(--teal) 0 4px, transparent 5px),
-    radial-gradient(circle at 42% 52%, var(--coral) 0 4px, transparent 5px),
-    radial-gradient(circle at 68% 34%, var(--gold) 0 4px, transparent 5px),
-    radial-gradient(circle at 78% 58%, var(--teal-dark) 0 4px, transparent 5px);
-}
-
-.heatmap::before {
-  inset: 26px;
-  background:
-    linear-gradient(90deg, rgba(15, 118, 110, 0.2), rgba(225, 95, 65, 0.75)),
-    repeating-linear-gradient(0deg, transparent 0 25%, rgba(255, 255, 255, 0.55) 25% 26%),
-    repeating-linear-gradient(90deg, transparent 0 25%, rgba(255, 255, 255, 0.55) 25% 26%);
-}
-
-.bars::before,
-.importance::before {
-  left: 28px;
-  right: 28px;
-  bottom: 28px;
-  height: 86px;
-  background:
-    linear-gradient(to top, var(--teal) 0 90%, transparent 90%),
-    linear-gradient(to top, var(--coral) 0 68%, transparent 68%),
-    linear-gradient(to top, var(--gold) 0 52%, transparent 52%),
-    linear-gradient(to top, #8aa2b4 0 35%, transparent 35%);
-  background-size: 18% 100%;
-  background-position: 0 0, 32% 0, 64% 0, 96% 0;
-  background-repeat: no-repeat;
-}
-
-.diagonal::before {
-  inset: 28px;
-  border-left: 2px solid #8aa2b4;
-  border-bottom: 2px solid #8aa2b4;
-  background: linear-gradient(135deg, transparent 49%, var(--coral) 50%, transparent 51%);
-}
-
-.residual::before {
-  left: 24px;
-  right: 24px;
-  top: 50%;
-  height: 2px;
-  background: #8aa2b4;
-}
-
-.residual::after {
-  inset: 20px;
-  background:
-    radial-gradient(circle at 20% 48%, var(--teal) 0 4px, transparent 5px),
-    radial-gradient(circle at 35% 56%, var(--coral) 0 4px, transparent 5px),
-    radial-gradient(circle at 52% 43%, var(--gold) 0 4px, transparent 5px),
-    radial-gradient(circle at 70% 54%, var(--teal-dark) 0 4px, transparent 5px);
-}
 
 .project-summary-panel {
   padding: 30px;
@@ -792,26 +671,6 @@ h3 {
   color: var(--muted);
 }
 
-.todo-section {
-  background: #fff;
-}
-
-.todo-list {
-  display: grid;
-  gap: 12px;
-  max-width: 760px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.todo-list li {
-  padding: 18px 20px;
-  background: var(--soft);
-  border-left: 4px solid var(--coral);
-  border-radius: 8px;
-  font-weight: 700;
-}
 
 .credits-section {
   background: var(--soft);
